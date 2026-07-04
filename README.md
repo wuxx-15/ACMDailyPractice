@@ -3,7 +3,7 @@
 This repository is for ACMers,a space for us to build together.<br>
 Good problems can be shared here.<br>
 Problems can come from Codeforces,Atcoder,luogu,nowcoder.etc.<br>
-Welcome to discuss problem-solving ideas and share your experience!<br>
+Welcome to discuss problem-solving ideas and experience!<br>
 
 Admittedly, ACM competitions are challenging and require a significant investment of time.<br>
 I created this repository out of a desire to foster mutual growth and progress through collaborative learning.<br>
