@@ -1,6 +1,6 @@
 #!/bin/bash
 #本脚本在macOS(arm64)下编写，在Fedora Workstation 44(x86_64)下再次测试
-#此路径下在macOS上使用Apple Clang编译(macOS下GCC不能链接到ASAN)，在Linux下使用GCC编译
+#在/bin/bash解释器路径下在macOS上使用Apple Clang编译(macOS下GCC如果需要链接到ASAN要额外配置，详见目录下的.md)，在Linux下使用GCC编译
 #在Linux下使用-fsanitize=address,undefined需要额外安装libasan,libubsan,具体方法如下：
 #   Debian/Ubuntu/Linux Mint:sudo apt update
 #                            sudo apt install libasan8 libubsan1
