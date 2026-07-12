@@ -1,3 +1,7 @@
+#补充！<br>
+通过以下的方式是可以在macOS上得到支持ASAN/UBSAN的GCC的，但是你如果指定用zsh解释器执行，死活会报错，可能是由于zsh特殊的安全性隔离机制<br>
+用bash解释器能跑通，但在macOS上调用的事Apple Clang，但这是最好的方法了，毕竟同样的脚本同时macOS/Linux上用<br>
+
 #在macOS上使用带ASAN,UBSAN的GCC<br>
 1.卸载现有 GCC 并从源码重新编译<br>
 ```
