@@ -1,5 +1,10 @@
 #!/bin/bash
+#本脚本在macOS(arm64)下编写，在Fedora Workstation 44(x86_64)下再次测试
 #此路径下在macOS上使用Apple Clang编译(macOS下GCC不能链接到ASAN)，在Linux下使用GCC编译
+#在Linux下使用-fsanitize=address,undefined需要额外安装libasan,libubsan,具体方法如下：
+#   Debian/Ubuntu/Linux Mint:sudo apt update
+#                            sudo apt install libasan8 libubsan1
+#   RHEL/Fedora:sudo dnf install libasan libubsan 
 #example:testspj1.sh sol.cpp spj.cpp gen.cpp 20
 #适用于无需构造暴力解的SPJ问题，如构造题
 sol=$1;spj=$2;gen=$3;loops=$4 
