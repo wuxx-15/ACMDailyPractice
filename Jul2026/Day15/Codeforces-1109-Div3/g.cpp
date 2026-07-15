@@ -1,10 +1,11 @@
 //若i > j
 //i >= j + nums[j] + 1
-//j <= i - nums[i] + 1
+//j <= i - nums[i] - 1
 //用树状数组优化枚举，时间复杂度O(n*log n)
 #include <iostream>
 #include <array>
 #include <algorithm>
+#include <cstring>
 #define ll long long
 using namespace std;
 const int MAXN=200001;
@@ -56,9 +57,10 @@ ll compute()
     ll ret=dp[1];
     sort(events.begin()+1,events.begin()+cnte+1,cmp);
     int NextEvent=1;
+    memset(max_val,0,sizeof(max_val));
     for (int i=2;i<=n;++i)
     {
-        if (NextEvent<=cnte && events[NextEvent][1]==i)
+        while (NextEvent<=cnte && events[NextEvent][1]==i)
         {
             add(events[NextEvent][0],dp[events[NextEvent][0]]);
             ++NextEvent;
