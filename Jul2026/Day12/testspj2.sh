@@ -7,8 +7,9 @@
 #   RHEL/Fedora:sudo dnf install libasan libubsan 
 #example:test2.sh sol.cpp brute.cpp spj.cpp gen.cpp 20
 #适用于需要构造暴力解的SPJ问题，如需要判断浮点数误差
+#Update 2026/07/25 使用pr命令替代sdiff命令，解决因最小编辑距离算法导致的排版错乱
 sol=$1;brute=$2;spj=$3;gen=$4;loops=$5
-trap 'rm -f sol brute spj gen' EXIT
+trap 'rm -f sol brute spj gen std.out sol.out' EXIT
 
 CMP="g++ -g3 -O2 -Wall -Wextra -fsanitize=address,undefined"
 $CMP $sol -o sol 2> debug.log #待验证的解
@@ -42,7 +43,7 @@ for ((i=1;i<=loops;++i)); do
         echo -e "WA on test $i!"
         IS_AC=0
         {
-            sdiff -w 60 std.out sol.out | head -n 50
+            pr -m -t std.out sol.out
         } > debug.log
         echo "Detailed log saved to debug.log"
         break
