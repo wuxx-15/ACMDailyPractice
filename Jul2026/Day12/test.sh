@@ -7,8 +7,9 @@
 #   RHEL/Fedora:sudo dnf install libasan libubsan 
 #example:test.sh sol.cpp brute.cpp gen.cpp 20
 #适用于答案唯一的一般性问题
+#Update 2026/07/25 使用pr命令替代sdiff命令，解决因最小编辑距离算法导致的排版错乱
 sol=$1;brute=$2;gen=$3;loops=$4
-trap 'rm -f sol brute gen' EXIT
+trap 'rm -f sol brute gen sol.out std.out' EXIT
 
 CMP="g++ -g3 -O2 -Wall -Wextra -fsanitize=address,undefined"
 $CMP $sol -o sol 2> debug.log #待验证的解
@@ -41,7 +42,7 @@ for ((i=1;i<=loops;++i)); do
         echo -e "WA on test $i!\n"
         IS_AC=0
         {
-            sdiff -w 60 std.out sol.out | head -n 50
+            pr -m -t std.out sol.out
         } > debug.log
         echo "Detailed log saved to debug.log"
         break
