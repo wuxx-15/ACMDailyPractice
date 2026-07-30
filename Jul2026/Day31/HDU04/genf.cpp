@@ -37,8 +37,8 @@ void solve()
 int main()
 {
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-    uniform_int_distribution<int> int_v1(3,9);
-    int t=5;
+    uniform_int_distribution<int> int_v1(99999,299999);
+    int t=1;
     cout<<t<<'\n';
     //构造一定能构造成功的例子
     while (t--)
