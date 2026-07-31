@@ -2,6 +2,7 @@
 #include <queue>
 #include <algorithm>
 #include <vector>
+#include <iostream>
 using namespace std;
 const int MAXN=300001;
 int n;
@@ -44,7 +45,11 @@ bool check()
     sort(a+1,a+n+1);
     for (int i=1;i<=n;++i)
     {
-        if (a[i] != i) return false;
+        if (a[i] != i) 
+        {
+            cerr << "Array a is not a permutation!\n"; //增加错误提示
+            return false;
+        }
         ab[i]=a[i];
     }
     int lb=(n+1)/2;
@@ -55,7 +60,12 @@ bool check()
     sort(c+1,c+len+1);
     for (int i=1;i<=len;++i)
     {
-        if (ab[i] != c[i]) return false;
+        if (ab[i] != c[i]) 
+        {
+            cerr << "Fail to construct the original Array c!\n";
+            cerr << ab[i] <<" != " << c[i] << '\n';
+            return false;
+        }
     }
     return true;
 }
